@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - Andhra Treats</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-content">
+      <img src="logohead.jpg" alt="Andhra Treats Logo" class="logo">
+      <h1>Andhra Treats</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+      <a href="products.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Products</a>
+      <a href="feedback.html" class="nav-link active"><i class="fas fa-comments"></i> Feedback</a>
+      <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a>
+      <a href="order.html" class="nav-link order-btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
+    </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <header id="dummyHeader"></header>
+
+  <!-- Feedback Hero Section -->
+  <section class="feedback-hero">
+    <div class="container">
+      <h1>Share Your Feedback</h1>
+      <p>Your opinion matters to us. Help us serve you better!</p>
+    </div>
+  </section>
+
+  <!-- Feedback Form Section -->
+  <section class="feedback-form-section">
+    <div class="container">
+      <div class="feedback-content">
+        <div class="feedback-info">
+          <h2>We Value Your Opinion</h2>
+          <p>At Andhra Treats, customer satisfaction is our top priority. Your feedback helps us improve our products and services to better serve you and future customers.</p>
+          
+          <div class="feedback-benefits">
+            <div class="benefit-item">
+              <i class="fas fa-star"></i>
+              <h4>Rate Our Products</h4>
+              <p>Share your experience with our authentic Andhra delicacies</p>
+            </div>
+            
+            <div class="benefit-item">
+              <i class="fas fa-lightbulb"></i>
+              <h4>Suggest Improvements</h4>
+              <p>Help us enhance our products and customer service</p>
+            </div>
+            
+            <div class="benefit-item">
+              <i class="fas fa-gift"></i>
+              <h4>Get Rewards</h4>
+              <p>Valuable feedback may earn you special discounts</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-form-container">
+          <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+              <label for="customerName">Your Name *</label>
+              <input type="text" id="customerName" name="customerName" required>
+            </div>
+
+            <div class="form-group">
+              <label for="customerEmail">Email Address *</label>
+              <input type="email" id="customerEmail" name="customerEmail" required>
+            </div>
+
+            <div class="form-group">
+              <label for="customerPhone">Phone Number</label>
+              <input type="tel" id="customerPhone" name="customerPhone">
+            </div>
+
+            <div class="form-group">
+              <label for="orderNumber">Order Number (if applicable)</label>
+              <input type="text" id="orderNumber" name="orderNumber" placeholder="e.g., AT2024001">
+            </div>
+
+            <div class="form-group">
+              <label for="productRating">Overall Rating *</label>
+              <div class="rating-stars" id="ratingStars">
+                <i class="fas fa-star" data-rating="1"></i>
+                <i class="fas fa-star" data-rating="2"></i>
+                <i class="fas fa-star" data-rating="3"></i>
+                <i class="fas fa-star" data-rating="4"></i>
+                <i class="fas fa-star" data-rating="5"></i>
+              </div>
+              <input type="hidden" id="productRating" name="productRating" required>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackCategory">Feedback Category *</label>
+              <select id="feedbackCategory" name="feedbackCategory" required>
+                <option value="">Select Category</option>
+                <option value="product-quality">Product Quality</option>
+                <option value="delivery">Delivery Service</option>
+                <option value="customer-service">Customer Service</option>
+                <option value="website">Website Experience</option>
+                <option value="pricing">Pricing</option>
+                <option value="packaging">Packaging</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackMessage">Your Feedback *</label>
+              <textarea id="feedbackMessage" name="feedbackMessage" rows="6" placeholder="Please share your detailed feedback, suggestions, or any issues you experienced..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="improvements">What can we improve?</label>
+              <textarea id="improvements" name="improvements" rows="4" placeholder="Any specific suggestions for improvement..."></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="recommendUs" name="recommendUs">
+                <span class="checkmark"></span>
+                Would you recommend Andhra Treats to others?
+              </label>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <span class="checkmark"></span>
+                Subscribe to our newsletter for updates and offers
+              </label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Submit Feedback
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="customer-reviews-section">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <h4>Priya Sharma</h4>
+              <span>Bangalore</span>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p>"Absolutely love the authentic taste of Putharekulu! It reminds me of my grandmother's cooking. The packaging was excellent and delivery was prompt."</p>
+          <div class="review-date">2 days ago</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <h4>Rajesh Kumar</h4>
+              <span>Hyderabad</span>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p>"The Kaja was perfectly crispy and sweet. Great quality products and excellent customer service. Will definitely order again!"</p>
+          <div class="review-date">1 week ago</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <h4>Meera Reddy</h4>
+              <span>Chennai</span>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p>"The pickles are incredibly flavorful and authentic. Exactly what I was looking for! Fast delivery and great packaging."</p>
+          <div class="review-date">2 weeks ago</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>How long does it take to process feedback?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We review all feedback within 24-48 hours and respond to queries that require a response within 2-3 business days.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Do you offer refunds for unsatisfactory products?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we have a customer satisfaction guarantee. If you're not happy with your order, please contact us within 7 days of delivery.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Can I suggest new products?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We love hearing product suggestions from our customers. Use the feedback form above to share your ideas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Andhra Treats</h3>
+          <p>Bringing authentic Andhra flavors to your doorstep since 2020</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> andhratreats@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 94937 27039</p>
+            <p><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Andhra Treats. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="feedback.js"></script>
+</body>
+</html>

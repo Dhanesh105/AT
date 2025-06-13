@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Andhra Treats</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-content">
+      <img src="logohead.jpg" alt="Andhra Treats Logo" class="logo">
+      <h1>Andhra Treats</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+      <a href="products.html" class="nav-link active"><i class="fas fa-shopping-bag"></i> Products</a>
+      <a href="feedback.html" class="nav-link"><i class="fas fa-comments"></i> Feedback</a>
+      <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a>
+      <a href="order.html" class="nav-link order-btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
+    </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <header id="dummyHeader"></header>
+
+  <!-- Products Hero Section -->
+  <section class="products-hero">
+    <div class="container">
+      <h1>Our Products</h1>
+      <p>Discover the authentic taste of Andhra Pradesh</p>
+    </div>
+  </section>
+
+  <!-- Product Categories -->
+  <section class="product-categories">
+    <div class="container">
+      <div class="category-filters">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn" data-category="sweets">Traditional Sweets</button>
+        <button class="filter-btn" data-category="snacks">Snacks</button>
+        <button class="filter-btn" data-category="pickles">Pickles</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products-grid-section">
+    <div class="container">
+      <div class="products-grid">
+        <!-- Traditional Sweets -->
+        <div class="product-item" data-category="sweets">
+          <div class="product-image">
+            <img src="Sugar Putharekulu.png" alt="Sugar Putharekulu">
+            <div class="product-badge">Popular</div>
+            <div class="product-overlay">
+              <button class="quick-view-btn" data-product="putharekulu">Quick View</button>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3>Sugar Putharekulu</h3>
+            <p class="product-description">Traditional paper-thin sweet delicacy made with rice starch and jaggery</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.9)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹250</span>
+              <span class="price-unit">/kg</span>
+            </div>
+            <div class="product-actions">
+              <button class="add-to-cart-btn" data-product="putharekulu" data-price="250">Add to Cart</button>
+              <button class="buy-now-btn" data-product="putharekulu">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-item" data-category="sweets">
+          <div class="product-image">
+            <img src="kaja.jpg" alt="Madatha Kaja">
+            <div class="product-overlay">
+              <button class="quick-view-btn" data-product="kaja">Quick View</button>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3>Madatha Kaja</h3>
+            <p class="product-description">Crispy layered sweet made with flour, ghee, and sugar syrup</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.8)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹180</span>
+              <span class="price-unit">/kg</span>
+            </div>
+            <div class="product-actions">
+              <button class="add-to-cart-btn" data-product="kaja" data-price="180">Add to Cart</button>
+              <button class="buy-now-btn" data-product="kaja">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-item" data-category="snacks">
+          <div class="product-image">
+            <img src="Tandra.png" alt="Mamadi Thandra">
+            <div class="product-overlay">
+              <button class="quick-view-btn" data-product="thandra">Quick View</button>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3>Mamadi Thandra</h3>
+            <p class="product-description">Sweet and tangy fruit leather made from mango pulp</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.7)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹120</span>
+              <span class="price-unit">/kg</span>
+            </div>
+            <div class="product-actions">
+              <button class="add-to-cart-btn" data-product="thandra" data-price="120">Add to Cart</button>
+              <button class="buy-now-btn" data-product="thandra">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-item" data-category="pickles">
+          <div class="product-image">
+            <img src="pickle.jpg" alt="Andhra Pickles">
+            <div class="product-badge">Spicy</div>
+            <div class="product-overlay">
+              <button class="quick-view-btn" data-product="pickle">Quick View</button>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3>Andhra Mixed Pickle</h3>
+            <p class="product-description">Spicy and flavorful traditional pickle with mixed vegetables</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.9)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹150</span>
+              <span class="price-unit">/kg</span>
+            </div>
+            <div class="product-actions">
+              <button class="add-to-cart-btn" data-product="pickle" data-price="150">Add to Cart</button>
+              <button class="buy-now-btn" data-product="pickle">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Products -->
+        <div class="product-item" data-category="sweets">
+          <div class="product-image">
+            <img src="Sugar Putharekulu.png" alt="Ghee Putharekulu">
+            <div class="product-overlay">
+              <button class="quick-view-btn" data-product="ghee-putharekulu">Quick View</button>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3>Ghee Putharekulu</h3>
+            <p class="product-description">Rich ghee-flavored version of traditional Putharekulu</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.8)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹300</span>
+              <span class="price-unit">/kg</span>
+            </div>
+            <div class="product-actions">
+              <button class="add-to-cart-btn" data-product="ghee-putharekulu" data-price="300">Add to Cart</button>
+              <button class="buy-now-btn" data-product="ghee-putharekulu">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-item" data-category="pickles">
+          <div class="product-image">
+            <img src="pickle.jpg" alt="Mango Pickle">
+            <div class="product-overlay">
+              <button class="quick-view-btn" data-product="mango-pickle">Quick View</button>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3>Andhra Mango Pickle</h3>
+            <p class="product-description">Tangy and spicy mango pickle with authentic Andhra spices</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.9)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹180</span>
+              <span class="price-unit">/kg</span>
+            </div>
+            <div class="product-actions">
+              <button class="add-to-cart-btn" data-product="mango-pickle" data-price="180">Add to Cart</button>
+              <button class="buy-now-btn" data-product="mango-pickle">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button class="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be dynamically added here -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <strong>Total: ₹<span id="cartTotal">0</span></strong>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Cart Toggle Button -->
+  <button class="cart-toggle" id="cartToggle">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Can't Find What You're Looking For?</h2>
+      <p>Contact us for custom orders and special requests</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="cta-btn primary">Contact Us</a>
+        <a href="feedback.html" class="cta-btn secondary">Share Feedback</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Andhra Treats</h3>
+          <p>Bringing authentic Andhra flavors to your doorstep since 2020</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> andhratreats@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 94937 27039</p>
+            <p><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Andhra Treats. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="products.js"></script>
+</body>
+</html>

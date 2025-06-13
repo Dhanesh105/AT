@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Andhra Treats</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-content">
+      <img src="logohead.jpg" alt="Andhra Treats Logo" class="logo">
+      <h1>Andhra Treats</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+      <a href="products.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Products</a>
+      <a href="feedback.html" class="nav-link"><i class="fas fa-comments"></i> Feedback</a>
+      <a href="contact.html" class="nav-link active"><i class="fas fa-phone"></i> Contact</a>
+      <a href="order.html" class="nav-link order-btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
+    </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <header id="dummyHeader"></header>
+
+  <!-- Contact Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Get In Touch</h1>
+      <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+    </div>
+  </section>
+
+  <!-- Contact Information Section -->
+  <section class="contact-info-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Phone</h3>
+          <p>+91 94937 27039</p>
+          <p class="contact-note">Available Mon-Sat, 9 AM - 7 PM</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p>andhratreats@gmail.com</p>
+          <p class="contact-note">We'll respond within 24 hours</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Location</h3>
+          <p>Andhra Pradesh, India</p>
+          <p class="contact-note">Serving customers nationwide</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>+91 94937 27039</p>
+          <p class="contact-note">Quick support and orders</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form-section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-form-info">
+          <h2>Send Us a Message</h2>
+          <p>Have a question about our products, need help with an order, or want to share feedback? We're here to help!</p>
+
+          <div class="contact-features">
+            <div class="feature">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Quick Response</h4>
+                <p>We respond to all inquiries within 24 hours</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fas fa-headset"></i>
+              <div>
+                <h4>Dedicated Support</h4>
+                <p>Our team is here to assist you with any questions</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fas fa-shield-alt"></i>
+              <div>
+                <h4>Secure Communication</h4>
+                <p>Your information is safe and secure with us</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="general-inquiry">General Inquiry</option>
+                <option value="product-question">Product Question</option>
+                <option value="order-support">Order Support</option>
+                <option value="delivery-issue">Delivery Issue</option>
+                <option value="bulk-order">Bulk Order</option>
+                <option value="partnership">Partnership</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="6" placeholder="Please describe your inquiry in detail..." required></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <span class="checkmark"></span>
+                Subscribe to our newsletter for updates and special offers
+              </label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Hours Section -->
+  <section class="business-hours-section">
+    <div class="container">
+      <h2>Business Hours</h2>
+      <div class="hours-grid">
+        <div class="hours-card">
+          <h3>Customer Support</h3>
+          <div class="hours-list">
+            <div class="hours-item">
+              <span>Monday - Friday</span>
+              <span>9:00 AM - 7:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span>Saturday</span>
+              <span>10:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span>Sunday</span>
+              <span>Closed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours-card">
+          <h3>Order Processing</h3>
+          <div class="hours-list">
+            <div class="hours-item">
+              <span>Monday - Saturday</span>
+              <span>8:00 AM - 8:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span>Sunday</span>
+              <span>10:00 AM - 4:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span>Holidays</span>
+              <span>Limited Hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="contact-faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-column">
+          <div class="faq-item">
+            <h4>How can I place an order?</h4>
+            <p>You can place orders through our website, call us directly, or message us on WhatsApp. We'll guide you through the process.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>What are your delivery areas?</h4>
+            <p>We deliver nationwide across India. Delivery times may vary based on location. Contact us for specific delivery information.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Do you offer bulk discounts?</h4>
+            <p>Yes, we offer special pricing for bulk orders. Please contact us with your requirements for a custom quote.</p>
+          </div>
+        </div>
+
+        <div class="faq-column">
+          <div class="faq-item">
+            <h4>How long do products stay fresh?</h4>
+            <p>Our products are made fresh and have different shelf lives. We provide storage instructions with each order.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Can I customize my order?</h4>
+            <p>Absolutely! We can customize orders based on your preferences. Contact us to discuss your specific requirements.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>What payment methods do you accept?</h4>
+            <p>We accept various payment methods including UPI, bank transfers, and cash on delivery (where available).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Order?</h2>
+      <p>Experience the authentic taste of Andhra Pradesh delivered fresh to your doorstep</p>
+      <div class="cta-buttons">
+        <a href="order.html" class="cta-btn primary">Place Order</a>
+        <a href="products.html" class="cta-btn secondary">View Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Andhra Treats</h3>
+          <p>Bringing authentic Andhra flavors to your doorstep since 2020</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> andhratreats@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 94937 27039</p>
+            <p><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Andhra Treats. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

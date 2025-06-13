@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andhra Treats - Authentic Andhra Sweets & Delicacies</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-content">
+      <img src="logohead.jpg" alt="Andhra Treats Logo" class="logo">
+      <h1>Andhra Treats</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+      <a href="products.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Products</a>
+      <a href="feedback.html" class="nav-link"><i class="fas fa-comments"></i> Feedback</a>
+      <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a>
+      <a href="order.html" class="nav-link order-btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
+    </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <header id="dummyHeader"></header>
+
+  <!-- Home Section with Enhanced Slider -->
+  <section class="hero" id="home">
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide active slide-1">
+          <div class="slide-content">
+            <h2>Authentic Andhra Sweets</h2>
+            <p>Experience the rich taste of traditional Putharekulu</p>
+            <a href="products.html" class="cta-button">Explore Products</a>
+          </div>
+        </div>
+        <div class="slide slide-2">
+          <div class="slide-content">
+            <h2>Traditional Flavors</h2>
+            <p>Handcrafted Kaja made with love and authentic ingredients</p>
+            <a href="products.html" class="cta-button">Order Now</a>
+          </div>
+        </div>
+        <div class="slide slide-3">
+          <div class="slide-content">
+            <h2>Fresh and Handmade</h2>
+            <p>Enjoy the essence of Andhra in every bite of Mamadi Thandra</p>
+            <a href="products.html" class="cta-button">Taste Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="slider-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="featured-products" id="categories">
+    <div class="container">
+      <h2>Our Signature Products</h2>
+      <p class="section-subtitle">Taste the authentic flavors of Andhra Pradesh</p>
+      <div class="product-grid">
+        <div class="product-card" data-product="putharekulu">
+          <div class="product-image">
+            <img src="Sugar Putharekulu.png" alt="Putharekulu">
+            <div class="product-overlay">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Sugar Putharekulu</h3>
+            <p class="product-description">Traditional paper-thin sweet delicacy</p>
+            <div class="product-price">₹250/kg</div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-product="kaja">
+          <div class="product-image">
+            <img src="kaja.jpg" alt="Kaja">
+            <div class="product-overlay">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Madatha Kaja</h3>
+            <p class="product-description">Crispy layered sweet with ghee</p>
+            <div class="product-price">₹180/kg</div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-product="thandra">
+          <div class="product-image">
+            <img src="Tandra.png" alt="Mamadi Thandra">
+            <div class="product-overlay">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Mamadi Thandra</h3>
+            <p class="product-description">Sweet and tangy fruit leather</p>
+            <div class="product-price">₹120/kg</div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-product="pickle">
+          <div class="product-image">
+            <img src="pickle.jpg" alt="Andhra Pickles">
+            <div class="product-overlay">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Andhra Pickles</h3>
+            <p class="product-description">Spicy and flavorful traditional pickles</p>
+            <div class="product-price">₹150/kg</div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="view-all-products">
+        <a href="products.html" class="view-all-btn">View All Products <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="reviews-slider">
+        <div class="review-card active">
+          <div class="review-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>"Amazing sweets! The taste is just like home. The Putharekulu is absolutely divine!"</p>
+            <div class="reviewer">
+              <div class="reviewer-info">
+                <h4>Ramesh Kumar</h4>
+                <span>Hyderabad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>"Best Andhra sweets I've had in a long time. Fresh, delicious, and authentic taste!"</p>
+            <div class="reviewer">
+              <div class="reviewer-info">
+                <h4>Priya Sharma</h4>
+                <span>Bangalore</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>"Fast delivery and superb quality. The pickles are incredibly flavorful. Highly recommend!"</p>
+            <div class="reviewer">
+              <div class="reviewer-info">
+                <h4>Akash Reddy</h4>
+                <span>Chennai</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="review-navigation">
+        <button class="review-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="review-next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Taste Authentic Andhra Flavors?</h2>
+      <p>Order now and get your favorite sweets delivered fresh to your doorstep</p>
+      <div class="cta-buttons">
+        <a href="order.html" class="cta-btn primary">Order Now</a>
+        <a href="feedback.html" class="cta-btn secondary">Share Feedback</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Andhra Treats</h3>
+          <p>Bringing authentic Andhra flavors to your doorstep since 2020</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> andhratreats@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 94937 27039</p>
+            <p><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Andhra Treats. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
