@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Order Page</title>
+  <style>
+    .quick-add-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+    }
+    .add-quick-btn {
+      background: #ff6b35;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    #cartItems {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Order Page</h1>
+  
+  <div class="quick-add-grid">
+    <div class="quick-add-item" data-product="test1" data-price="100">
+      <img src="Sugar Putharekulu.png" alt="Test Product" width="50">
+      <h4>Test Product 1</h4>
+      <div class="price">₹100/kg</div>
+      <button class="add-quick-btn">Add</button>
+    </div>
+    
+    <div class="quick-add-item" data-product="test2" data-price="200">
+      <img src="kaja.jpg" alt="Test Product 2" width="50">
+      <h4>Test Product 2</h4>
+      <div class="price">₹200/kg</div>
+      <button class="add-quick-btn">Add</button>
+    </div>
+  </div>
+  
+  <div id="cartItems">Cart items will appear here</div>
+  <div id="cartCount">0 items</div>
+  
+  <script>
+    let orderItems = [];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Test page loaded');
+      
+      const quickAddGrid = document.querySelector('.quick-add-grid');
+      
+      quickAddGrid.addEventListener('click', function(e) {
+        const button = e.target.closest('.add-quick-btn');
+        if (!button) return;
+        
+        e.preventDefault();
+        console.log('Button clicked!');
+        
+        const productItem = button.closest('.quick-add-item');
+        const productId = productItem.getAttribute('data-product');
+        const productPrice = parseInt(productItem.getAttribute('data-price'));
+        const productName = productItem.querySelector('h4').textContent;
+        
+        console.log('Adding product:', { productId, productPrice, productName });
+        
+        orderItems.push({
+          id: productId,
+          name: productName,
+          price: productPrice,
+          quantity: 1
+        });
+        
+        updateDisplay();
+        
+        // Button animation
+        const originalHTML = button.innerHTML;
+        button.innerHTML = 'Added!';
+        button.style.background = '#28a745';
+        setTimeout(() => {
+          button.innerHTML = originalHTML;
+          button.style.background = '';
+        }, 1500);
+      });
+    });
+    
+    function updateDisplay() {
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      
+      cartCount.textContent = `${orderItems.length} items`;
+      cartItems.innerHTML = orderItems.map(item => 
+        `<div>${item.name} - ₹${item.price}</div>`
+      ).join('');
+    }
+  </script>
+</body>
+</html>

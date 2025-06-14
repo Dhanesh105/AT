@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Functionality Test - Andhra Treats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #FF9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #F57C00;
+        }
+        .result {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #81C784;
+        }
+        .error {
+            border-left-color: #e74c3c;
+            background: #fdf2f2;
+        }
+        .success {
+            border-left-color: #27ae60;
+            background: #f0f9f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛒 Cart Functionality Test Suite</h1>
+    <p>This page tests all cart functionalities to ensure they work end-to-end.</p>
+
+    <div class="test-section">
+        <h2>1. Cart Storage Test</h2>
+        <button class="test-button" onclick="testCartStorage()">Test Cart Storage</button>
+        <div id="storageResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Add to Cart Test</h2>
+        <button class="test-button" onclick="testAddToCart()">Add Test Product</button>
+        <button class="test-button" onclick="testAddMultiple()">Add Multiple Products</button>
+        <div id="addResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Cart Synchronization Test</h2>
+        <button class="test-button" onclick="testCartSync()">Test Cart Sync</button>
+        <div id="syncResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Navigation Test</h2>
+        <button class="test-button" onclick="testNavigation()">Test Page Navigation</button>
+        <div id="navResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Current Cart Contents</h2>
+        <button class="test-button" onclick="displayCart()">Show Cart</button>
+        <button class="test-button" onclick="clearCart()">Clear Cart</button>
+        <div id="cartDisplay" class="result"></div>
+    </div>
+
+    <script>
+        // Test cart storage functionality
+        function testCartStorage() {
+            const result = document.getElementById('storageResult');
+            try {
+                // Test localStorage availability
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem('test', 'value');
+                    localStorage.removeItem('test');
+                    result.innerHTML = '<span class="success">✅ localStorage is available and working</span>';
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = '<span class="error">❌ localStorage is not supported</span>';
+                    result.className = 'result error';
+                }
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ localStorage error: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Test adding products to cart
+        function testAddToCart() {
+            const result = document.getElementById('addResult');
+            try {
+                const testProduct = {
+                    id: 'test-putharekulu',
+                    name: 'Test Sugar Putharekulu',
+                    price: 250,
+                    image: 'Sugar Putharekulu.png',
+                    quantity: 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const existingItem = cart.find(item => item.id === testProduct.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push(testProduct);
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                result.innerHTML = `<span class="success">✅ Product added successfully! Cart now has ${cart.length} unique items</span>`;
+                result.className = 'result success';
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ Add to cart failed: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Test adding multiple products
+        function testAddMultiple() {
+            const result = document.getElementById('addResult');
+            try {
+                const products = [
+                    { id: 'kaja', name: 'Madatha Kaja', price: 180, image: 'kaja.jpg', quantity: 1 },
+                    { id: 'thandra', name: 'Mamadi Thandra', price: 120, image: 'Tandra.png', quantity: 1 },
+                    { id: 'pickle', name: 'Andhra Pickle', price: 150, image: 'pickle.jpg', quantity: 1 }
+                ];
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                products.forEach(product => {
+                    const existingItem = cart.find(item => item.id === product.id);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push(product);
+                    }
+                });
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                result.innerHTML = `<span class="success">✅ Multiple products added! Cart now has ${cart.length} unique items</span>`;
+                result.className = 'result success';
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ Multiple add failed: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Test cart synchronization
+        function testCartSync() {
+            const result = document.getElementById('syncResult');
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const checkoutCart = JSON.parse(localStorage.getItem('checkoutCart')) || [];
+                
+                result.innerHTML = `
+                    <span class="success">✅ Cart sync test completed</span><br>
+                    <strong>Regular cart:</strong> ${cart.length} items<br>
+                    <strong>Checkout cart:</strong> ${checkoutCart.length} items<br>
+                    <em>Both should sync when navigating between pages</em>
+                `;
+                result.className = 'result success';
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ Cart sync test failed: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Test navigation functionality
+        function testNavigation() {
+            const result = document.getElementById('navResult');
+            try {
+                // Create checkout cart for testing
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart.length > 0) {
+                    localStorage.setItem('checkoutCart', JSON.stringify(cart));
+                    result.innerHTML = `
+                        <span class="success">✅ Navigation test setup complete</span><br>
+                        <a href="order.html" target="_blank" style="color: #FF9800; text-decoration: none;">🔗 Open Order Page</a><br>
+                        <a href="products.html" target="_blank" style="color: #FF9800; text-decoration: none;">🔗 Open Products Page</a><br>
+                        <em>Cart should persist across pages</em>
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = '<span class="error">❌ Add some products first before testing navigation</span>';
+                    result.className = 'result error';
+                }
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ Navigation test failed: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Display current cart contents
+        function displayCart() {
+            const result = document.getElementById('cartDisplay');
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart.length === 0) {
+                    result.innerHTML = '<span>🛒 Cart is empty</span>';
+                    result.className = 'result';
+                } else {
+                    let cartHTML = '<strong>🛒 Current Cart Contents:</strong><br>';
+                    let total = 0;
+                    cart.forEach((item, index) => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        cartHTML += `${index + 1}. ${item.name} - ₹${item.price}/kg × ${item.quantity} = ₹${itemTotal}<br>`;
+                    });
+                    cartHTML += `<strong>Total: ₹${total}</strong>`;
+                    result.innerHTML = cartHTML;
+                    result.className = 'result success';
+                }
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ Display cart failed: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Clear cart
+        function clearCart() {
+            const result = document.getElementById('cartDisplay');
+            try {
+                localStorage.removeItem('cart');
+                localStorage.removeItem('checkoutCart');
+                result.innerHTML = '<span class="success">✅ Cart cleared successfully</span>';
+                result.className = 'result success';
+            } catch (e) {
+                result.innerHTML = `<span class="error">❌ Clear cart failed: ${e.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        // Auto-run basic tests on page load
+        window.onload = function() {
+            testCartStorage();
+            displayCart();
+        };
+    </script>
+</body>
+</html>

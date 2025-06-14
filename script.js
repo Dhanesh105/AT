@@ -1,5 +1,48 @@
 // Andhra Treats Website JavaScript
 
+// Loading Screen Functionality
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loadingScreen');
+
+    if (loadingScreen) {
+        // Minimum loading time for better UX
+        const minLoadingTime = 1500;
+        const startTime = Date.now();
+
+        // Hide loading screen when page is fully loaded
+        window.addEventListener('load', function() {
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
+
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+
+                // Remove loading screen from DOM after animation
+                setTimeout(() => {
+                    if (loadingScreen.parentNode) {
+                        loadingScreen.parentNode.removeChild(loadingScreen);
+                    }
+                }, 500);
+            }, remainingTime);
+        });
+
+        // Fallback: Hide loading screen after maximum time
+        setTimeout(() => {
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    if (loadingScreen.parentNode) {
+                        loadingScreen.parentNode.removeChild(loadingScreen);
+                    }
+                }, 500);
+            }
+        }, 5000);
+    }
+}
+
+// Initialize loading screen immediately
+initLoadingScreen();
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initSlider();

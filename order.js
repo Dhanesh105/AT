@@ -1,14 +1,82 @@
-// Order Page JavaScript
+// Order Page JavaScript - Cart First Layout
 
 let orderItems = [];
 let deliveryFee = 50;
+let currentStep = 'cart'; // 'cart' or 'delivery'
+
+// Test that JavaScript is loading
+console.log('Order.js loaded successfully!');
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Order page loaded!');
+
+    // Initialize everything
     initOrderPage();
     loadCartItems();
     initQuickOrder();
     initOrderForm();
+    initStepNavigation();
     setMinDeliveryDate();
+    updateCartDisplay();
+
+    // Simple click handler for add buttons
+    document.body.addEventListener('click', function(e) {
+        // Check if clicked element is an add button or inside one
+        let button = null;
+        if (e.target.classList.contains('add-quick-btn')) {
+            button = e.target;
+        } else if (e.target.closest('.add-quick-btn')) {
+            button = e.target.closest('.add-quick-btn');
+        }
+
+        if (button) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log('Add button clicked!');
+
+            const productItem = button.closest('.quick-add-item');
+            if (!productItem) {
+                console.error('Product item not found');
+                return;
+            }
+
+            const productId = productItem.getAttribute('data-product');
+            const productPrice = parseInt(productItem.getAttribute('data-price'));
+            const productName = productItem.querySelector('h4')?.textContent;
+            const productImage = productItem.querySelector('img')?.src;
+
+            if (!productId || !productPrice || !productName) {
+                console.error('Missing product data');
+                return;
+            }
+
+            console.log('Adding product:', { productId, productPrice, productName });
+
+            // Add to order using the centralized function
+            addToOrder({
+                id: productId,
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            });
+
+            // Button feedback
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> Added';
+            button.style.background = 'linear-gradient(135deg, #81C784, #66BB6A)';
+            button.style.color = 'white';
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = '';
+                button.style.color = '';
+            }, 2000);
+
+            // Show subtle notification at top
+            showNotification(`${productName} added to cart!`, 'success');
+        }
+    });
 });
 
 function initOrderPage() {
@@ -57,51 +125,107 @@ function loadCartItems() {
 }
 
 function initQuickOrder() {
-    const quickProducts = document.querySelectorAll('.quick-product');
-    
-    quickProducts.forEach(product => {
-        const addBtn = product.querySelector('.add-quick-btn');
-        addBtn.addEventListener('click', function() {
-            const productId = product.getAttribute('data-product');
-            const productPrice = parseInt(product.getAttribute('data-price'));
-            const productName = product.querySelector('h4').textContent;
-            const productImage = product.querySelector('img').src;
-            
-            addToOrder({
-                id: productId,
-                name: productName,
-                price: productPrice,
-                image: productImage,
-                quantity: 1
-            });
-            
-            // Button animation
-            this.textContent = 'Added!';
-            this.style.background = '#28a745';
-            setTimeout(() => {
-                this.textContent = 'Add';
-                this.style.background = '';
-            }, 1500);
+    // Use event delegation for better reliability
+    const quickAddGrid = document.querySelector('.quick-add-grid');
+
+    if (!quickAddGrid) {
+        console.error('Quick add grid not found!');
+        return;
+    }
+
+    quickAddGrid.addEventListener('click', function(e) {
+        const button = e.target.closest('.add-quick-btn');
+        if (!button) return;
+
+        e.preventDefault();
+
+        const productItem = button.closest('.quick-add-item');
+        if (!productItem) return;
+
+        const productId = productItem.getAttribute('data-product');
+        const productPrice = parseInt(productItem.getAttribute('data-price'));
+        const productName = productItem.querySelector('h4').textContent;
+        const productImage = productItem.querySelector('img').src;
+
+        addToOrder({
+            id: productId,
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: 1
         });
+
+        // Button animation
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> Added';
+        button.style.background = 'linear-gradient(135deg, #81C784, #66BB6A)';
+        button.style.color = 'white';
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+            button.style.color = '';
+        }, 2000);
     });
+}
+
+function initStepNavigation() {
+    console.log('Initializing step navigation...');
+    const proceedBtn = document.getElementById('proceedBtn');
+    const backBtn = document.getElementById('backBtn');
+    const cartSection = document.querySelector('.cart-section');
+    const deliveryForm = document.getElementById('deliveryForm');
+
+    console.log('Navigation elements:', { proceedBtn, backBtn, cartSection, deliveryForm });
+
+    if (proceedBtn) {
+        proceedBtn.addEventListener('click', function() {
+            console.log('Proceed button clicked');
+            if (orderItems.length === 0) {
+                showNotification('Please add items to your cart first', 'error');
+                return;
+            }
+
+            currentStep = 'delivery';
+            cartSection.style.display = 'none';
+            deliveryForm.style.display = 'block';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            console.log('Back button clicked');
+            currentStep = 'cart';
+            cartSection.style.display = 'block';
+            deliveryForm.style.display = 'none';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 function addToOrder(product) {
     const existingItem = orderItems.find(item => item.id === product.id);
-    
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         orderItems.push(product);
     }
-    
+
+    updateCartDisplay();
     updateOrderSummary();
-    showNotification(`${product.name} added to order!`);
+    showNotification(`${product.name} added to cart!`);
 }
 
 function removeFromOrder(productId) {
     orderItems = orderItems.filter(item => item.id !== productId);
+    updateCartDisplay();
     updateOrderSummary();
+    showNotification('Item removed from cart', 'info');
 }
 
 function updateOrderQuantity(productId, newQuantity) {
@@ -111,13 +235,67 @@ function updateOrderQuantity(productId, newQuantity) {
             removeFromOrder(productId);
         } else {
             item.quantity = newQuantity;
+            updateCartDisplay();
             updateOrderSummary();
         }
     }
 }
 
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const emptyCart = document.getElementById('emptyCart');
+    const proceedBtn = document.getElementById('proceedBtn');
+
+    if (!cartItems || !cartCount) return;
+
+    // Update cart count
+    const totalItems = orderItems.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''}`;
+
+    // Show/hide empty cart state
+    if (orderItems.length === 0) {
+        if (emptyCart) emptyCart.style.display = 'block';
+        if (proceedBtn) proceedBtn.disabled = true;
+        cartItems.innerHTML = '';
+        if (emptyCart) cartItems.appendChild(emptyCart);
+        return;
+    }
+
+    if (emptyCart) emptyCart.style.display = 'none';
+    if (proceedBtn) proceedBtn.disabled = false;
+
+    // Clear and rebuild cart items
+    cartItems.innerHTML = '';
+
+    orderItems.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-info">
+                <h4>${item.name}</h4>
+                <div class="cart-item-price">₹${item.price}/kg</div>
+            </div>
+            <div class="cart-item-controls">
+                <button class="qty-btn" onclick="updateOrderQuantity('${item.id}', ${item.quantity - 1})">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <span class="qty-display">${item.quantity}</span>
+                <button class="qty-btn" onclick="updateOrderQuantity('${item.id}', ${item.quantity + 1})">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="remove-item" onclick="removeFromOrder('${item.id}')" title="Remove item">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+        cartItems.appendChild(cartItem);
+    });
+}
+
 function updateOrderSummary() {
-    const orderItemsContainer = document.getElementById('orderItems');
+    const orderItemsContainer = document.getElementById('cartItems');
     const subtotalElement = document.getElementById('subtotal');
     const finalTotalElement = document.getElementById('finalTotal');
     
@@ -125,7 +303,13 @@ function updateOrderSummary() {
     orderItemsContainer.innerHTML = '';
     
     if (orderItems.length === 0) {
-        orderItemsContainer.innerHTML = '<p class="empty-order">No items in your order. Add products using the quick order section.</p>';
+        orderItemsContainer.innerHTML = `
+            <div class="empty-cart" id="emptyCart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <p class="empty-cart-subtitle">Add some delicious treats below!</p>
+            </div>
+        `;
         subtotalElement.textContent = '₹0';
         finalTotalElement.textContent = `₹${deliveryFee}`;
         return;
@@ -134,7 +318,7 @@ function updateOrderSummary() {
     // Add order items
     orderItems.forEach(item => {
         const orderItem = document.createElement('div');
-        orderItem.className = 'order-item';
+        orderItem.className = 'cart-item';
         orderItem.innerHTML = `
             <img src="${item.image}" alt="${item.name}">
             <div class="item-details">
@@ -347,43 +531,48 @@ function showNotification(message, type = 'info') {
         <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
         <span>${message}</span>
     `;
-    
+
     const colors = {
-        success: '#28a745',
-        error: '#dc3545',
-        info: '#17a2b8'
+        success: 'linear-gradient(135deg, #81C784, #66BB6A)',
+        error: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+        info: 'linear-gradient(135deg, #FF9800, #F57C00)'
     };
-    
+
     notification.style.cssText = `
         position: fixed;
-        top: 100px;
-        right: 20px;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-100%);
         background: ${colors[type]};
         color: white;
-        padding: 15px 20px;
-        border-radius: 8px;
+        padding: 12px 24px;
+        border-radius: 25px;
         z-index: 1001;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
-        gap: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        max-width: 350px;
+        gap: 8px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        font-weight: 500;
+        font-size: 0.9rem;
+        max-width: 400px;
+        text-align: center;
     `;
 
     document.body.appendChild(notification);
 
     setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
+        notification.style.transform = 'translateX(-50%) translateY(0)';
     }, 100);
 
     setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
+        notification.style.transform = 'translateX(-50%) translateY(-100%)';
         setTimeout(() => {
             if (document.body.contains(notification)) {
                 document.body.removeChild(notification);
             }
-        }, 300);
-    }, 4000);
+        }, 400);
+    }, 3000);
 }
